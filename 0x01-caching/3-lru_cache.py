@@ -41,7 +41,11 @@ class LRUCache(BaseCaching):
                 self.order.append(key)
 
     def get(self, key):
-        """
-        Get an item by key
-        """
-        return self.cache_data.get(key, None)
+        """ Get an item by key """
+        if key is None or key not in self.cache_data:
+            return None
+
+        # Move the accessed key to the end to mark it as recently used
+        self.order.remove(key)
+        self.order.append(key)
+        return self.cache_data[key]
