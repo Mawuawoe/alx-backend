@@ -43,7 +43,7 @@ class Server:
         """
         Return a dictionary with pagination data.
         """
-        assert index is None or (0 <= index < len(self.indexed_dataset()))
+        '''assert index is None or (0 <= index < len(self.indexed_dataset()))
         assert page_size > 0
 
         indexed_data = self.indexed_dataset()
@@ -55,11 +55,35 @@ class Server:
                 page_data.append(indexed_data[current_index])
             current_index += 1
 
-        next_index = current_index if current_index < len(indexed_data) else None
+        if current_index < len(indexed_data):
+            next_index = current_index
+        else:
+            next_index = None
 
         return {
             'index': index,
             'next_index': next_index,
             'page_size': len(page_data),
             'data': page_data
+        }'''
+        data = self.indexed_dataset()
+        assert index is not None and index >= 0 and index <= max(data.keys())
+        page_data = []
+        data_count = 0
+        next_index = None
+        start = index if index else 0
+        for i, item in data.items():
+            if i >= start and data_count < page_size:
+                page_data.append(item)
+                data_count += 1
+                continue
+            if data_count == page_size:
+                next_index = i
+                break
+        page_info = {
+            'index': index,
+            'next_index': next_index,
+            'page_size': len(page_data),
+            'data': page_data,
         }
+        return page_info
