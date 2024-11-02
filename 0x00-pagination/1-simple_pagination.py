@@ -4,7 +4,7 @@ Pagination example
 """
 import csv
 import math
-from typing import List, Tuple
+from typing import List, Tuple, Dict, Any
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
@@ -72,3 +72,23 @@ class Server:
 
         paginated_data = all_data[start_index:end_index]
         return paginated_data
+
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
+        """
+        Returns paginated data with hypermedia metadata.
+        """
+        # get the data per page
+        page_data = self.get_page(page, page_size)
+
+        total_items = len(self.dataset())
+        total_pages = math.ceil(total_items / page_size)
+
+        hypermedia = {
+            "page_size": len(page_data),
+            "page": page,
+            "data": page_data,
+            "next_page": page + 1 if page < total_pages else None,
+            "prev_page": page - 1 if page > 1 else None,
+            "total_pages": total_pages
+        }
+        return hypermedia
