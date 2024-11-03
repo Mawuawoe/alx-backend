@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
-"""Least Frequently Used caching module.
-"""
+""" LFUCache class that implements a LFU caching system """
 from collections import OrderedDict
 
 from base_caching import BaseCaching
 
 
 class LFUCache(BaseCaching):
-    """Represents an object that allows storing and
-    retrieving items from a dictionary with a LFU
-    removal mechanism when the limit is reached.
+    """
+    LFUCache defines a LFU caching system
     """
     def __init__(self):
         """Initializes the cache.
