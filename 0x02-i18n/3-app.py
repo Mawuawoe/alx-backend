@@ -20,6 +20,7 @@ app.config.from_object(Config)
 # Instantiate Babel
 babel = Babel(app)
 
+
 @babel.localeselector
 def get_locale():
     """Determine the best match for supported languages."""
@@ -29,8 +30,8 @@ def get_locale():
 @app.route('/')
 def index():
     """Render the index page."""
-    return render_template('3-index.html', 
-                           home_title=_("home_title"), 
+    return render_template('3-index.html',
+                           home_title=_("home_title"),
                            home_header=_("home_header"))
 
 
