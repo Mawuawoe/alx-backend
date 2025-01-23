@@ -3,12 +3,15 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-msgid ""
-msgstr ""
+msgid "home_title"
+msgstr "Welcome to ALX"
+
+msgid "home_header"
+msgstr "Hello world!"
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-01-23 11:20+0000\n"
-"PO-Revision-Date: 2025-01-23 11:20+0000\n"
+"POT-Creation-Date: 2025-01-23 11:25+0000\n"
+"PO-Revision-Date: 2025-01-23 11:25+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
